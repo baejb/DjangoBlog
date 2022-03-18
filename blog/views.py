@@ -1,3 +1,27 @@
 from django.shortcuts import render
+from .models import Post
+
+
 
 # Create your views here.
+def index(request):
+
+    posts = Post.objects.all().order_by('-pk') #모든 레코드들을 post에 넣음
+    return render(request,
+                  'blog/index.html',
+                  {
+                      'posts' : posts,
+                  }
+                  )
+
+
+def single_post_page(request,pk):
+    post = Post.objects.get(pk=pk)
+
+
+    return render(request,
+                  'blog/single_post_page.html',
+                  {
+                      'post':post,
+                  }
+                  )
