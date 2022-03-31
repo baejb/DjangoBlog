@@ -27,7 +27,7 @@ class PostDetail(DetailView):
 
 #    return render(
 #        request,
-#        'blog/single_post_page.html',
+#        'blog/post_detail.html',
 #        {
 #            'post': post,
 #        }
