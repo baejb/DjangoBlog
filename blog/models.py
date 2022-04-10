@@ -5,8 +5,8 @@ from django.db import models
 from turtle import mode
 
 # Create your models here.
-class Category(models.Model):
-    
+
+
 
 class Post(models.Model):
     title = models.CharField(max_length=30)
