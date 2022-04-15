@@ -34,7 +34,7 @@ class Post(models.Model):
 
     hook_msg = models.TextField(blank=True)
 
-    author = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
     tags = models.ManyToManyField(Tag, blank=True)
     head_image = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)
