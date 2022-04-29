@@ -1,25 +1,18 @@
 {% extends 'blog/base.html' %}
-
 {% block title %}
     <title>Blog</title>
 {% endblock %}
-
 {% block main_area %}
         {% if user.is_authenticated %}
             {% if user.is_superuser or user.is_staff %}
                 <a class="btn btn-info btn-sm float-right" href="/blog/create_post/"
                    role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;New Post</a>
-
             {% endif %}
         {% endif %}
-
                 <h1>Blog
                     {% if category %} in category '{{ category }}' {% endif %}
                     {% if tag %} with tag '{{ tag }}' {% endif %}
-
-
                 </h1>
-
                 {% for p in post_list %}
                 <!-- Blog Post -->
                 <div class="card mb-4">
@@ -34,7 +27,7 @@
                         {% if p.hook_msg %}
                              <p class="card-text">{{ p.hook_msg }}</p>
                         {% else %}
-                            <p class="card-text">{{ p.content | truncatewords:30 }}</p>
+                            <p class="card-text">{{ p.get_content_markdown | truncatewords_html:30 | safe }}</p>
                         {% endif %}
                         <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
                         {% if p.tags.exists %}
