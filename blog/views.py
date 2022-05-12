@@ -108,7 +108,7 @@ def show_tag_posts(request, slug):
 
 def add_comment(request, pk):
     if request.user.is_authenticated:
-        post = get_object_or_404(Post,pk=pk)
+        post = get_object_or_404(Post, pk=pk)
 
         if request.method == 'POST':
             comment_form = CommentForm(request.POST)
